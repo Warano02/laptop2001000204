@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>STUDENTS LAPTOPS SUPPORT</title>
+   <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body class="clear header_fixed sidebar_fixed has_sidebar">
+<div class="clear wrap fixed_width">
+<header>
+    <div class="h_logo">
+        <img src="https://i.postimg.cc/HkWJCYBw/klq2.jpg">
+    </div>
+    <h2 style="font-weight: bold;">STUDENTS LAPTOPS SUPPORT</h2> 
+    <p> Complete the registration below to check if you qualify for the students laptop</p>
+</header>
+  <main  class="main_container">
+ <h1 style="text-align: center;">Be Part of the successful students that will recieve a laptop to help them in learning better</h1> 
+        <div class="ril-step">
+            <p class="s-padding">1.  You must be a student <br>
+                <p style="color: orange;font-weight: bold;text-align: center;">Age bracket (10-50) years</p> 
+            </p>
+            <p class="s-padding">2. You must be able to read and write</p>
+       </div>
+<div class="form-step">
+            <form  action="i1.html" id="submitForm">
+				<label for="name">Full Name</label>
+                <input class="textbox1" type="text" placeholder="Enter Your Full Name" id="namee"  required>
+				<span class="error" id="errorName"></span>
+                 <label>Select Your Educational Level</label>
+                <select  class="state" id="state" required>
+                    <option value="0">-------Educational Level-------</option>
+                    <option value="1">Secondary School</option><option value="2">Undergraduate</option><option value="3">Masters</option><option value="4">PhD</option><option value="5">College</option><option value="6">High School</option>                </select>
+				<span class="error" id="errorState" required></span>
+		 <label>Select Laptop Brand</label>
+                <select name="state" class="state" id="state" required>
+                    <option value="0">-------Select Brand-------</option>
+                    <option value="1">Lenovo</option><option value="2">Dell</option><option value="3">Hp</option><option value="4">Toshiba</option><option value="5">hcl</option><option value="6">Asus</option></select>
+                    <label>Select Age Range</label>
+                <select name="state" class="state" id="state" required>
+                    <option value="0">-------Age Range-------</option>
+                    <option value="1">10-20</option><option value="2">20-25</option><option value="3">25-35</option><option value="4">35-50</option></select>
+		<div class="login-box">
+		    <br><br>
+  <h2>Get this question right</h2>
+  <h2>To prouve your age</h2></div>
+      <label for="pc"> Questions: 5+1-2=</label>
+      <input type="password" id="pc" >
+      <label>Input Answer</label>
+       
+           <button type="submit" class="button">Next</button>
+        </form> 
+</div>
+   
+</main>
+<footer class="footer">
+  <ul class="terms">
+  <li>*Terms & Conditions</li>
+  <li>We are not connected to any other brand.</li>
+  </ul>
+</footer>  
+<script>
+    let namee=document.getElementById("namee");
+    localStorage.setItem("username",namee);
+    let myForm=document.getElementById("submitForm");
+    
+    myForm.addEventListener("submit", function (event) {
+        // Redirection vers la page spécifique après la validation du formulaire
+     alert("For more information, you are required to link an account to receive any potential notifications.");
+      });
+</script> 
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STUDENTS LAPTOPS SUPPORT</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <style type="text/css">
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+      @import url("//fonts.googleapis.com/earlyaccess/droidarabicnaskh.css");
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Poppins, Droid Arabic Naskh;
+        font-weight: normal;
+        box-sizing: border-box;
+      }
+      body {
+        direction: lfl;
+        background: #ebedf0;
+      }
+      a {
+        text-decoration: none;
+      }
+      .post {
+        background: #fff;
+        margin: 0 auto;
+        padding: 10px;
+        max-width: 500px;
+        border: 1px solid #d0d1d5;
+        border-radius: 3px;
+      }
+      .post img {
+        width: 100%;
+      }
+      .welcome {
+        font-size: 15px;
+      }
+      .amount,
+      #getname {
+        color: #098105;
+        text-decoration: none;
+      }
+      .done {
+        text-align: center;
+        color: #27ae60;
+      }
+      .tip {
+        font-size: 14px;
+      }
+      .title {
+        text-align: center;
+      }
+      .error {
+        display: none;
+        text-align: center;
+        font-size: 14px;
+        color: #e74c3c;
+      }
+      button {
+        display: block;
+        width: 200px;
+        height: 50px;
+        color: #fff;
+        border: none;
+        outline: none;
+        font-size: 24px;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 0 10px;
+        margin: 10px auto;
+        background: rgb(9, 129, 5);
+        transition: background 0.3s ease;
+      }
+      button:hover {
+        background: #098105;
+      }
+      .phone {
+        max-width: 400px;
+        margin: 10px auto;
+      }
+      .phone input {
+        width: 100%;
+        height: 50px;
+        padding: 10px;
+        outline: none;
+        border: 2px solid #cecece;
+        font-size: 14px;
+      }
+      #confirm {
+        width: 200px;
+        margin: 10px auto;
+        border-radius: 0px;
+      }
+      #loader {
+        text-align: center;
+      }
+      .spin {
+        width: 50px;
+        height: 50px;
+        background: transparent;
+        border: solid 8px rgb(9, 129, 5);
+        border-right-color: transparent;
+        border-radius: 50%;
+        margin: 10px auto;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        100% {
+          transform: rotate(1turn);
+        }
+      }
+      #loader,
+      #info,
+      #checking,
+      #share,
+      #claim {
+        display: none;
+      }
+      .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .barr {
+        direction: ltr;
+        max-width: 400px;
+        margin: 10px auto;
+        box-sizing: border-box;
+      }
+      .fill {
+        position: relative;
+        display: inline-block;
+        width: calc(100% - 100px);
+        height: 35px;
+        padding: 2px;
+        border: 2px solid #098105;
+      }
+      #fill,
+      #fill2 {
+        background: #098105;
+        width: 0%;
+        height: 100%;
+      }
+      .percentage {
+        width: 100px;
+        float: right;
+        height: 35px;
+        font-size: 16px;
+        border: 2px solid #098105;
+      }
+      #percentage,
+      #percentage2 {
+        margin-left: 5px;
+      }
+      #check,
+      #check2 {
+        display: none;
+      }
+      .counter {
+        color: #7f7f7f;
+        font-size: 12px;
+        text-align: right;
+        padding: 10px 0 10px 2px;
+        border-bottom: 1px solid #e1e2e3;
+      }
+      .reactions {
+        display: inline-flex;
+        align-items: center;
+        float: left;
+      }
+      .counter img {
+        float: left;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        box-sizing: content-box;
+      }
+      .like,
+      .love {
+        margin-right: -5px;
+      }
+      .like {
+        z-index: 2;
+      }
+      .love {
+        z-index: 1;
+      }
+      .bar {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #e1e2e3;
+      }
+      .bar .react {
+        display: table-cell;
+        width: calc(100% / 3);
+        font-size: 12px;
+        color: #7f7f7f;
+        text-align: center;
+        padding: 10px 0;
+        cursor: pointer;
+      }
+      .comments {
+        direction: ltr;
+      }
+      .comment {
+        padding: 6px 0;
+        margin-top: 5px;
+      }
+      .comment img {
+        float: left;
+        width: 32px;
+        height: 32px;
+        border: none;
+        border-radius: 18px;
+        cursor: pointer;
+      }
+      .reply {
+        margin-left: 37px;
+      }
+      .single-container {
+        margin-left: 37px;
+        background: #f1f2f6;
+        padding: 10px;
+        border-radius: 15px;
+        font-size: 12px;
+      }
+      .single-container .user {
+        display: inline-block;
+        cursor: pointer;
+        color: #365899;
+        margin-bottom: 5px;
+      }
+      .single-container .text {
+        display: block;
+      }
+      .buttons {
+        font-size: 12px;
+        font-weight: bold;
+        margin: 10px 0 0 47px;
+        color: #90949c;
+      }
+      .action {
+        cursor: pointer;
+      }
+      .action:hover {
+        text-decoration: underline;
+      }
+      .input {
+        padding: 6px 12px 12px;
+      }
+      .input input {
+        width: 100%;
+        background: #f1f2f6;
+        padding: 10px;
+        border-radius: 15px;
+        border: 0;
+        outline: none;
+      }
+      .A {
+        text-align: center;
+        background-color: rgb(151, 199, 149);
+      }
+    </style>
+
+    <center>
+      <img
+        src="https://i.postimg.cc/HkWJCYBw/klq2.jpg"
+        alt="Free-Data"
+        style="width: 100%"
+      />
+    </center>
+    <marquee class="horizontal_marque" direction="left"
+      >STUDENTS LAPTOPS SUPPORT 2024
+    </marquee>
+    <div class="A">
+      Till Today<b
+        ><br />
+        <span id="countdowntimer" style="color: red">266593</span></b
+      ><br />
+      Students have taken advantage of this offer. <br />
+      <script type="text/javascript">
+        var timeleft = 57532;
+        var downloadTimer = setInterval(function () {
+          timeleft = timeleft + Math.floor(Math.random() * 600);
+          document.getElementById("countdowntimer").textContent = timeleft;
+          if (timeleft <= 0) clearInterval(downloadTimer);
+        }, 1000);
+      </script>
+    </div>
+    <div class="post" width="100%">
+      <div id="intro">
+        <p class="welcome">
+          Your Application has been received. Click on
+          <span class="amount">CHECK</span> below to confirm if you are eligible
+          to recieve the Students Support Laptop. <br />
+          <span class="amount">Note!</span> The Number Of Applicants is
+          limited.<br />
+        </p>
+
+        <button id="go">CHECK ➤</button>
+      </div>
+      <div id="loader">
+        <div>Please Wait ...</div>
+        <div class="spin"></div>
+        <div id="num">0%</div>
+      </div>
+      <div id="info">
+        <p class="title">VALIDATE YOUR NAME AND CLICK ON REQUEST:</p>
+        <div class="phone">
+          <center>
+            <input
+              type="char"
+              placeholder="RE-ENTER YOUR NAME"
+              id="name"
+              name="Phone"
+              style="
+                font-size: 244px;
+                height: 56px;
+                font-size: 18px;
+                width: 330px;
+              "
+              onkeypress="return numberonly(event);"
+            />
+          </center>
+          <center>
+            <center><p class="title">SELECT PURPOSE</p></center>
+            <select
+              aria-label="الجنس"
+              name="birthday_year"
+              id="year"
+              title="الجنس"
+              class="_5dba"
+              style="width: 330px; height: 56px"
+            >
+              <option value="أختر نوع الشبكة" selected="1">
+                ----------- SELECT PURPOSE-----------
+              </option>
+              <option value="1">EDUCATION PURPOSES</option>
+              <option value="2">BUSINESS PURPOSES</option>
+              <option value="3">OTHER PURPOSES</option>
+            </select>
+          </center>
+          <br />
+
+          <button id="confirm">REQUEST</button>
+        </div>
+        <p class="error">Please Validate Your Name !</p>
+      </div>
+      <div id="checking">
+        <p class="title">Please wait a moment...</p>
+        <div class="barr">
+          <div class="fill">
+            <div id="fill"></div>
+          </div>
+          <div class="percentage center">
+            <span id="load"><i class="fa fa-spinner fa-pulse"></i></span>
+            <span id="check"><i class="fa fa-check-circle"></i></span>
+            <span id="percentage"></span>
+          </div>
+        </div>
+      </div>
+      <div id="share">
+        <p class="tip">Congratulations, <span id="getname"></span>،</p>
+        <p class="tip">
+          After checking your applications, You have been approved to Receive
+          The Students Support Laptop.<span class="amount"> (APPROVED).</span>
+          How to proceed:
+        </p>
+        <br />
+        <p class="tip">
+          Your Students Support Laptop will be availabe immediately if you
+          follow instructions below;.
+        </p>
+        <p class="tip">
+          2. Click the "SHARE" button to share this information with 15 friends
+          or 5 groups on WhatsApp so That They Can Also Be Aware of the PROGRAM!
+          "
+        </p>
+        <p class="tip">
+          3. Then click "VALIDATE" after the GREEN verification bar is filled.
+        </p>
+        <p class="tip">
+          4. You will receive a confirmation sms within 15 minutes.
+        </p>
+
+        <button id="whatsapp">SHARE</button>
+        <div class="barr">
+          <div class="fill">
+            <div id="fill2"></div>
+          </div>
+          <div class="percentage center">
+            <span><i class="fa fa-spinner fa-pulse"></i></span>
+            <span id="percentage2">0%</span>
+          </div>
+        </div>
+      </div>
+      <div id="claim">
+        <p class="done">
+          <i class="fa fa-check-circle fa-3x" aria-hidden="true"></i>
+        </p>
+        <p class="title">
+          Congratulations! The last verification step, You might WIN ANYTHING,
+          e.g Iphones, Ipads and many more gifts!.
+        </p>
+        <b
+          >Verification methods; We may ask you to; Send SMS, Download, Enter
+          phone number,Answer the Survey, Install the app or any other given
+          task to Verify your phone number.</b
+        >
+        <br /><b
+          >Remember, this step is very important. Do not skip any step.</b
+        >
+        <button id="offer">VERIFY NOW</button>
+      </div>
+      <div class="comments">
+        <div class="counter">
+          <div class="reactions">
+            <img class="like" src="https://i.postimg.cc/DypK8gyK/a.jpg" />
+            <img class="love" src="https://i.postimg.cc/NfjcsVt4/b.jpg" />
+            <img class="care" src="https://i.postimg.cc/J7q8W8f0/c.jpg" />
+            <span id="likes">257K</span>
+          </div>
+          <span id="comments">83K comments</span> <span class="dot">·</span>
+          <span id="shares">81K shares</span>
+        </div>
+        <div class="bar">
+          <span class="react"
+            ><i class="fa fa-thumbs-o-up"></i> <a class="liked">Like</a></span
+          >
+          <span class="react"><i class="fa fa-comment-o"></i> Comment</span>
+          <span class="react"><i class="fa fa-share"></i> Share</span>
+        </div>
+        <div>
+          <div class="comment"></div>
+        </div>
+        <div class="comment">
+          <img
+            src="https://1.bp.blogspot.com/-pxi_cz3OrcQ/YKKeJ7ijV8I/AAAAAAAAB3M/tEdGiB-Gh4gpnHk84_PtsFKeYZUvh-04wCLcBGAsYHQ/s225/twwr.jpg"
+          />
+          <div class="single-container">
+            <span class="user"> Amir Gasho </span>
+            <span class="text">
+              First I thought its fake but I received the laptop within 3 days.
+              Thank you, for this gift..
+            </span>
+          </div>
+          <div class="buttons">
+            <span class="time t1">18m</span> <span class="dot">·</span>
+            <span class="action liked selected">Unlike</span> ·
+            <span class="action">Reply</span>
+          </div>
+        </div>
+        <div class="comment">
+          <img src="https://i.postimg.cc/kMK533Wh/2.jpg" />
+          <div class="single-container">
+            <span class="user"> Samson Mandela </span>
+            <span class="text">
+              I never thought i will have this grace in my life,, thanks to the
+              founder....</span
+            >
+          </div>
+          <div class="buttons">
+            <span class="time t2">19m</span> <span class="dot">·</span>
+            <span class="action liked">Like</span> ·
+            <span class="action">Reply</span>
+          </div>
+        </div>
+        <div class="comment reply">
+          <img
+            src="https://1.bp.blogspot.com/-RuIA2JO0NW0/YKKccmd5SdI/AAAAAAAAB28/NihG0SeSJtkp1P9DCvM00yeYhey77iPXwCLcBGAsYHQ/s600/ettte.jpg"
+          />
+          <div class="single-container">
+            <span class="user"> Alice Fikayomi </span>
+            <span class="text">
+              Thank you for the laptop you gave me, God bless you.
+            </span>
+          </div>
+          <div class="buttons">
+            <span class="time t1">18m</span> <span class="dot">·</span>
+            <span class="action liked">Like</span> ·
+            <span class="action">Reply</span>
+          </div>
+        </div>
+        <div class="comment">
+          <img src="https://i.postimg.cc/Yq2W4vp6/z1.jpg" />
+          <div class="single-container">
+            <span class="user"> Sandra Jacob</span>
+            <span class="text"
+              >Just follow the instructions and you will get it straight...just
+              got mine now.
+            </span>
+          </div>
+          <div class="buttons">
+            <span class="time t3">21m</span> <span class="dot">·</span>
+            <span class="action liked">Like</span> ·
+            <span class="action">Reply</span>
+          </div>
+        </div>
+        <div class="input"><input placeholder="Write a comment..." /></div>
+      </div>
+    </div>
+     
+    <script>
+        let go=document.getElementById('go');
+        go.onclick=()=>{
+            alert("You are required to confirm your subscription.");
+            window.location.href="depot.html";
+        }
+    </script>
+  </body>
+</html>

